@@ -1,0 +1,7 @@
+npm install --save @react-native-firebase/app 
+
+(installing firebase with npm)
+
+npm">npm config set registry http://registry.npmjs.org/
+
+Source: https://prograide.com/pregunta/51676/erreur-d39installation-npm-rollbackfailedoptional
