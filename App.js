@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import BoardScreen from './components/BoardScreen';
+import User from './components/user';
+
 
 export default function App() {
   return (
-    <BoardScreen/>
+    <View style={styles.container}>
+      <User text={"user 1"}/>
+      <User text={"user 2"}/>
+      
+    </View>
   );
 }
 
