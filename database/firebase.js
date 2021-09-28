@@ -1,23 +1,26 @@
 // Import the functions you need from the SDKs you need
-import firebase from "firebase";
+import firebase  from "firebase/app";
 import "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAlZWSqYV9g9mWjUh1gE5LgmmfXOBy-I5I",
-  authDomain: "fireproj-3b453.firebaseapp.com",
-  projectId: "fireproj-3b453",
-  storageBucket: "fireproj-3b453.appspot.com",
-  messagingSenderId: "414910703034",
-  appId: "1:414910703034:web:338e0ac9ade2a7952de983",
-  measurementId: "G-08504PLN5B"
+  apiKey: "AIzaSyDz6remGPgHoO0gsZxx5QFjZzsTfIODoJI",
+  authDomain: "crudbook-127e5.firebaseapp.com",
+  projectId: "crudbook-127e5",
+  storageBucket: "crudbook-127e5.appspot.com",
+  messagingSenderId: "85964288116",
+  appId: "1:85964288116:web:b6bd7b6a7b5544b8326121",
+  measurementId: "G-XRPMR15E06"
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore(app);
-export const AnimalsRef = db.collection("animals");
-export{firebase};
+const app=firebase.initializeApp(firebaseConfig);
+const db =firebase.firestore(app);
+export const Boards=db.collection("boards");
+
+
+export default {firebase} ;
