@@ -4,6 +4,7 @@ import { Button, StyleSheet, Text, View,TextInput } from 'react-native';
 
 function   CRUD(props) {
     const  [name,setName]=useState("ahmed");
+    const  [age,setAge]=useState(23);
     const clickhandeler=()=>{
         setName("samir");
 
@@ -13,22 +14,29 @@ function   CRUD(props) {
     const ChangePerson =()=>{
         setPerson ({name :"samira",age: 24})
     }
+    const [conter,setCounter]=useState(1);
+    const compteur=()=>{
+        setCounter(conter);
+        conter++;
+       
+    }
     return (
         <View style={styles.container}>
                 <Text style={StyleSheet.titre}>CRUD</Text>
-                {/*<View style={styles.inputs}>
-                <TextInput  placeholder="Type here to title!" />
-                   
-                    <TextInput  placeholder="Type here age!" />
-                    <View style={styles.btncontainer}>
-                    <Button
-                    title="create"/>
-                    </View>
-                 
-
-                </View> */}
-                <Text>My name is {person.name}</Text>
-                <Text> my age is {person.age}</Text>
+               
+                <Text>Enter Name:</Text>
+               
+                <TextInput style={styles.txtinput}
+                multiline
+                 placeholder ="Name"
+                 onChangeText={(value)=>setName(value)}
+                />
+                <TextInput style={styles.txtinput}
+                 placeholder ="Age"
+                 onChangeText={(value)=>setAge(value)}
+                />
+                <Text>name : {name}</Text>
+                <Text>name : {age}</Text>
                 <View style={styles.statebtn}>
                     <Button
                      title ="update person"
@@ -55,17 +63,13 @@ const styles = StyleSheet.create({
 
     },
     
-    inputs : {
-        
-        borderColor :"green",
-        borderWidth : 1,
-        paddingVertical : 80,
-       
-        alignItems : 'center',
-        flexDirection : 'column',
-
-    },
-    btncontainer : {
-        marginTop : 40,
+  
+   
+    txtinput : {
+        borderWidth :1,
+        borderColor : "#777",
+        padding : 8,
+        margin : 10,
+        width : 200,
     },
 })
