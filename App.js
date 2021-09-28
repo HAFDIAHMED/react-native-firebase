@@ -6,10 +6,15 @@ import Profile from './components/profile';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from './components/settings';
+import Store from './components/store';
+import Chat from './components/chat';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export default function App() {
   const Stack = createStackNavigator();
+  const Tab = createBottomTabNavigator();
   function MyStacks () {
     return (
       <Stack.Navigator>
@@ -20,16 +25,60 @@ export default function App() {
     </Stack.Navigator>
 
     );
+    
 
+  }
+  function MyTabsButton () {
+    return (
+      
+        <Tab.Navigator>
+          <Tab.Screen name = "Chat" component ={Chat}
+          options ={{
+            tabBarLabel : "messages",
+            tabBarIcon : ({color , size}) =>(
+              <Ionicons name ="chatbox" color ={color} size={size}/>
+            ),
+
+          }}
+          />
+          <Tab.Screen name = "Store" component ={Store} 
+          options ={{
+            tabBarLabel : "Store",
+            tabBarIcon : ({color, size })=>(
+              <Ionicons name ="list" color ={color} size ={size}/>
+
+            ),
+
+          }}
+          />
+          <Tab.Screen 
+          name="Settings" component={SettingsScreen}
+          options ={{
+            tabBarLabel: "Settings",
+            tabBarIcon : ({color , size})=>(
+              <Ionicons
+              name ="settings" 
+              color={color} size ={size}
+              />
+            ),
+          }}
+          />
+
+        </Tab.Navigator>
+    
+    );
+    
   }
 
   return (
     /*  <NavigationContainer>
       <MyStacks/>
     </NavigationContainer>*/
-    <View style={styles.container}>
-      <Text>hello</Text>
-    </View>
+       <NavigationContainer>
+      <MyTabsButton/>
+    </NavigationContainer>
+
+    
    
   );
 }
