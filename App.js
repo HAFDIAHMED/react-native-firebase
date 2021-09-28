@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import Home from './components/home';
 import Profile from './components/profile';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,12 +9,17 @@ import SettingsScreen from './components/settings';
 import Store from './components/store';
 import Chat from './components/chat';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 import { Ionicons } from '@expo/vector-icons';
+import CRUD from './components/crud';
 
 
 export default function App() {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
+  const TabTop = createMaterialTopTabNavigator();
+
   function MyStacks () {
     return (
       <Stack.Navigator>
@@ -57,7 +62,7 @@ export default function App() {
             tabBarLabel: "Settings",
             tabBarIcon : ({color , size})=>(
               <Ionicons
-              name ="settings" 
+              name ="settings-outline" 
               color={color} size ={size}
               />
             ),
@@ -69,14 +74,33 @@ export default function App() {
     );
     
   }
+  function MyTabsTop (){
+    return (
+      <NavigationContainer>
+
+<TabTop.Navigator>
+        <TabTop.Screen name ="Chat" component={Chat}/>
+        <TabTop.Screen name ="Store" component ={Store}/>
+      </TabTop.Navigator>
+      </NavigationContainer>
+     
+    );
+
+
+  }
 
   return (
     /*  <NavigationContainer>
       <MyStacks/>
     </NavigationContainer>*/
-       <NavigationContainer>
+       /*<NavigationContainer>
       <MyTabsButton/>
-    </NavigationContainer>
+    </NavigationContainer> */
+     /*<NavigationContainer>
+      <MyTabsTop/>
+    </NavigationContainer> */
+
+    <CRUD/>
 
     
    
