@@ -18,9 +18,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app=firebase.initializeApp(firebaseConfig);
-const db =firebase.firestore(app);
-export const Boards=db.collection("boards");
+firebase.initializeApp(firebaseConfig);
+firebase.firestore();
 
 
-export default {firebase} ;
+
+
+export default firebase ;

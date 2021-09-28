@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet,SafeAreaView, Text, View, Modal } from 'react-native';
 import Home from './components/home';
 import Profile from './components/profile';
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,7 +17,12 @@ import BoardScreen from './boards/BoardScreen';
 import BoardDetailScreen from './boards/BoardDetailScreen';
 import AddBoardScreen from './boards/AddBoardScreen';
 import EditBoardScreen from './boards/EditBoardScreen';
-import { TapGestureHandler } from 'react-native-gesture-handler';
+import { TapGestureHandler, TextInput } from 'react-native-gesture-handler';
+import {useState,useEffect} from 'react';
+import AddUserScreen from './screens/AddUserScreen';
+import UserScreen from './screens/UserScreen';
+import UserDetailScreen from './screens/UserDetailScreen';
+
 
 
 export default function App() {
@@ -123,7 +128,20 @@ export default function App() {
       title: 'Third Item',
     },
   ];
+   function MyUsers (){
+
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name ="AddUserScreen" component={AddUserScreen}/>
+        <Stack.Screen name ="UserScreen" component={UserScreen}/>
+        <Stack.Screen name ="UserDetailScreen" component={UserDetailScreen}/>
+      </Stack.Navigator>
+    );
+   }
+ 
+
   
+
   return (
     /*  <NavigationContainer>
       <MyStacks/>
@@ -136,8 +154,8 @@ export default function App() {
     </NavigationContainer> */
 
     <NavigationContainer>
-      <MyBoardButtom/>
-    </NavigationContainer>  
+      <MyUsers/>
+    </NavigationContainer>
     /*<View style={styles.container}>
       {
         DATA.map((item)=>
@@ -156,21 +174,13 @@ export default function App() {
    
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F0F0F0',
+    justifyContent : 'center',
     alignItems: 'center',
-    justifyContent: 'center',
+
   },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
+  
 });
