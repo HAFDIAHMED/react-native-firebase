@@ -1,16 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import User from './components/user';
+import Home from './components/home';
+import Profile from './components/profile';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SettingsScreen from './components/settings';
 
 
 export default function App() {
+  const Stack = createStackNavigator();
+  function MyStacks () {
+    return (
+      <Stack.Navigator>
+      <Stack.Screen  name="Home" component={Home}/>
+      <Stack.Screen  name="Profile" component={Profile}/>
+      <Stack.Screen name ="Settings" component={SettingsScreen}/>
+
+    </Stack.Navigator>
+
+    );
+
+  }
+
   return (
+    /*  <NavigationContainer>
+      <MyStacks/>
+    </NavigationContainer>*/
     <View style={styles.container}>
-      <User text={"user 1"}/>
-      <User text={"user 2"}/>
-      
+      <Text>hello</Text>
     </View>
+   
   );
 }
 
