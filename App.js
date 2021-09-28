@@ -13,11 +13,17 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import { Ionicons } from '@expo/vector-icons';
 import CRUD from './components/crud';
+import BoardScreen from './boards/BoardScreen';
+import BoardDetailScreen from './boards/BoardDetailScreen';
+import AddBoardScreen from './boards/AddBoardScreen';
+import EditBoardScreen from './boards/EditBoardScreen';
+import { TapGestureHandler } from 'react-native-gesture-handler';
 
 
 export default function App() {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
+  const Tap = createBottomTabNavigator();
   const TabTop = createMaterialTopTabNavigator();
 
   function MyStacks () {
@@ -88,6 +94,21 @@ export default function App() {
 
 
   }
+  function MyBoardButtom (){
+
+    return (
+      <Stack.Navigator>
+      <Stack.Screen name="BoardScreen" component={BoardScreen}/>
+      <Stack.Screen name="BoardDetailScreen" component={BoardDetailScreen}/>
+      <Stack.Screen name="AddBoardScreen" component={AddBoardScreen}/>
+      <Stack.Screen name="EditBoardScreen" component={EditBoardScreen}/>
+      
+      
+
+    </Stack.Navigator>
+    );
+  }
+  
 
   return (
     /*  <NavigationContainer>
@@ -100,8 +121,9 @@ export default function App() {
       <MyTabsTop/>
     </NavigationContainer> */
 
-    <CRUD/>
-
+    <NavigationContainer>
+      <MyBoardButtom/>
+    </NavigationContainer> 
     
    
   );
