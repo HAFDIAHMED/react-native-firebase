@@ -52,7 +52,7 @@ class UserDetailScreen extends Component {
     });
   }
   deleteUser (){
-    const dbRef = firebase.firestore().collection('users').doc(this.props.route.params.userKey)
+    const dbRef = firebase.firestore().collection('users').doc(this.props.route.params.userKey);
     dbRef.delete().this((res)=>
     {
       console.log('Item removed from database')
@@ -114,7 +114,7 @@ class UserDetailScreen extends Component {
            <Button
           title="Delete User"
           color="red"
-          onPress ={()=>this.deleteUser()}
+          onPress ={()=>this.openTwoButtonAlert()}
           />
 
 
@@ -150,5 +150,14 @@ const styles = StyleSheet.create({
    
 
   },
+  preloader: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 
 })
