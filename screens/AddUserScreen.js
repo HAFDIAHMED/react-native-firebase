@@ -4,7 +4,24 @@ import firebase  from "firebase/app";
 import "firebase/firestore";
 
 class AddUserScreen extends Component {
-  
+  constructor (){
+    super();
+    this.dbRef=firebase.firestore().collection('users');/*connection to DB */
+    this.state={
+      name:'',
+      email :'',
+      mobile : '',
+      isLoading : false
+      /*this.state takes a column of data  from the db  */
+    };
+  }
+   
+  inputValueUpdate =(val,prop)=>{
+    const state = this.state;
+    state[prop]=val;
+    this.setState(state);
+    /*affecting the value inputed to this.state(column of data) */
+  }
 
   render() {
    
@@ -48,8 +65,9 @@ const styles = StyleSheet.create({
   },
    inputgroup:{
      flex :1,
+     marginBottom : 15,  
      borderBottomWidth : 1,
-     borderBottomColor : '#cccccc'
+     borderBottomColor : '#cccccc',
    },
   preloader: {
     left: 0,
