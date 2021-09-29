@@ -23,7 +23,51 @@ class AddUserScreen extends Component {
     /*affecting the value inputed to this.state(column of data) */
   }
 
+  storeUser () {
+    if(this.state.name===''){
+      alert("name is empty fill it !")
+    } else {
+      this.setState(
+        {
+          isLoading:true,
+
+        }
+      );
+      this.dbRef.add({
+        name : this.state.name,
+        email : this.state.email,
+        mobile: this.state.mobile,
+      }).then((res)=>
+      {
+        this.setState({
+          name :'',
+          email : '',
+          mobile :'',
+          isLoading : false,
+        });
+      }
+      ).catch((err)=>{
+        console.error("error found : ", err);
+        this.setState({
+          isLoading : false
+        });
+
+      }
+      );
+    }
+  }
+
   render() {
+    if (this.state.isLoading){
+      return (
+          <View style={styles.preloader}>
+            <ActivityIndicator
+            size="large" color ="#9E9E9E"
+            />
+
+          </View>
+      )
+    }
    
     return (
       <ScrollView style={styles.container}>
@@ -32,6 +76,9 @@ class AddUserScreen extends Component {
          <TextInput 
          multiline={true}
           placeholder={'Name'}
+          value={this.state.name}
+          onChangeText={(val)=>this.inputValueUpdate(val , 'name')}
+
          />
 
        </View>
@@ -39,11 +86,15 @@ class AddUserScreen extends Component {
          {/*email */}
          <TextInput
           placeholder={'Email'}
+          value={this.state.email}
+          onChangeText={(val)=>this.inputValueUpdate(val , 'email')}
          />
        </View>
        <View style={styles.inputgroup}>
          <TextInput 
          placeholder={"Mobile"}
+         value={this.state.mobile}
+         onChangeText={(val)=>this.inputValueUpdate(val , 'mobile')}
          />
        </View>
       
@@ -51,6 +102,7 @@ class AddUserScreen extends Component {
          <Button
           title="Add User"
           color ='green'
+          onPress={()=>this.storeUser()}
          />
        </View>
       </ScrollView>
