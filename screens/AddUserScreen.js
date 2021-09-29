@@ -45,6 +45,7 @@ class AddUserScreen extends Component {
           mobile :'',
           isLoading : false,
         });
+        this.props.navigation.navigate('UserScreen')
       }
       ).catch((err)=>{
         console.error("error found : ", err);
@@ -56,6 +57,7 @@ class AddUserScreen extends Component {
       );
     }
   }
+  
 
   render() {
     if (this.state.isLoading){
