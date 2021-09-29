@@ -100,11 +100,15 @@ class AddUserScreen extends Component {
          />
        </View>
       
-       <View >
+       <View  style={{flex:1,}}>
          <Button
           title="Add User"
           color ='green'
           onPress={()=>this.storeUser()}
+         />
+         <Button
+          title="List Users"
+          onPress={()=>this.props.navigation.navigate("UserScreen")}
          />
        </View>
       </ScrollView>
@@ -115,7 +119,7 @@ class AddUserScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 35
+    padding: 35,
   },
    inputgroup:{
      flex :1,

@@ -52,7 +52,7 @@ class UserScreen extends Component {
 
     
       
-    ];
+    
     return (
       <ScrollView style={styles.container}>
           {
