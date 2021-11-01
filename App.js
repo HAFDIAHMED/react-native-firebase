@@ -132,9 +132,21 @@ export default function App() {
 
     return (
       <TabTop.Navigator style={{marginTop : 40}}>
-        <TabTop.Screen name ="Add User" component={AddUserScreen}/>
-        <TabTop.Screen name ="Users" component={UserScreen}/>
-        <TabTop.Screen name ="User DetailS" component={UserDetailScreen}/>
+        <TabTop.Screen name ="AddUserScreen" component={AddUserScreen}
+        options={{
+          tabBarLabel:"add user"
+        }}
+        />
+        <TabTop.Screen name ="UserScreen" component={UserScreen}
+          options={{
+            tabBarLabel:"Users List"
+          }}
+        />
+        <TabTop.Screen name ="UserDetailScreen" component={UserDetailScreen}
+          options={{
+            tabBarLabel:"User Details"
+          }}
+        />
       </TabTop.Navigator>
     );
    }

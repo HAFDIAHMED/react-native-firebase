@@ -1,9 +1,10 @@
 // screens/UserDetailScreen.js
 
 import React, { Component } from 'react';
-import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
+import { Alert, Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View, Text } from 'react-native';
 import firebase  from "firebase/app";
 import "firebase/firestore";
+import { Ionicons } from '@expo/vector-icons';
 
 class UserDetailScreen extends Component {
   constructor (){
@@ -83,7 +84,13 @@ class UserDetailScreen extends Component {
     }
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.input_container}>
+          <View  style={styles.title_container}>
+            <Ionicons name="person-circle" size={30} color="blue" />
+          <Text style={styles.title}> USER DETAILS</Text>
+          </View>
         <View style={styles.inputs}>
+          
           <TextInput
           placeholder={"Name"}
           value={this.state.name}
@@ -103,6 +110,7 @@ class UserDetailScreen extends Component {
           value={this.state.mobile}
           onChangeText={(val)=>this.inputValueUpdate(val, 'mobile')}
           />
+        </View>
         </View>
         <View style={styles.buttons}>
           <Button
@@ -135,17 +143,21 @@ const styles = StyleSheet.create({
 
   },
   inputs :{
-    flex : 1,
-    padding : 0,
+    flex :1,
+    marginBottom : 15,  
     borderBottomWidth : 1,
-    marginBottom: 15,
-    borderBottomColor : "#cccccc",
-
+    //borderBottomColor : '#cccccc',
+    borderWidth:1,
+    margin : 10,
+    borderRadius:20,
+    padding:10,
+    flexDirection: 'row',
   },
   buttons : {
    flex : 1,
    flexDirection : 'row',
-   justifyContent : 'center',
+   justifyContent : 'space-evenly',
+
    
    
 
@@ -158,6 +170,23 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  input_container : {
+    borderWidth:1,
+    marginBottom:20,
+    borderColor:'#cccccc',
+    borderRadius:20,
+    paddingBottom:30,
+  },
+  title : {
+    alignSelf:'center',
+    fontSize:20,
+    fontWeight:'bold',
+  },
+  title_container : {
+      flexDirection:'row',
+      margin:10,
+      alignSelf:'center'
+  },
 
 })

@@ -48,11 +48,7 @@ class UserScreen extends Component {
           <ActivityIndicator size="large" color="#9E9E9E"/>
         </View>
       )
-    }
-
-    
-      
-    
+    }  
     return (
       <ScrollView style={styles.container}>
           {
@@ -72,15 +68,10 @@ class UserScreen extends Component {
                     <ListItem.Subtitle>
                       {item.email}
                     </ListItem.Subtitle>
-                  </ListItem.Content>
-                  
-
+                  </ListItem.Content>      
                 </ListItem>
-
               );
-            
             }
-            
             )}
 
         

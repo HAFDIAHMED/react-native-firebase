@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, TextInput, ScrollView, ActivityIndicator, View } from 'react-native';
+import { Button, StyleSheet, TextInput,Text, ScrollView, ActivityIndicator, View } from 'react-native';
 import firebase  from "firebase/app";
 import "firebase/firestore";
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 class AddUserScreen extends Component {
   constructor (){
@@ -73,19 +75,30 @@ class AddUserScreen extends Component {
    
     return (
       <ScrollView style={styles.container}>
-       <View style={styles.inputgroup}>
+        <View style={styles.input_container}>
+          <View  style={styles.title_container}>
+            <Ionicons name="people" size={23} color="blue" />
+          <Text style={styles.title}> USERS APP</Text>
+          </View>
+         
+        <View style={styles.inputgroup}>
          {/*name */}
+         <Ionicons  name ="person" size={23}  style={{marginRight:10,}}  color="green"/>
+
          <TextInput 
          multiline={true}
           placeholder={'Name'}
           value={this.state.name}
           onChangeText={(val)=>this.inputValueUpdate(val , 'name')}
+          
 
          />
 
        </View>
        <View style={styles.inputgroup}>
          {/*email */}
+         <Ionicons  name ="mail" size={23}  style={{marginRight:10,}} color="green"/>
+
          <TextInput
           placeholder={'Email'}
           value={this.state.email}
@@ -93,14 +106,20 @@ class AddUserScreen extends Component {
          />
        </View>
        <View style={styles.inputgroup}>
+       <Ionicons  name ="call" size={23}  style={{marginRight:10,}}  color="green" />
+         {/*phone */}
+
          <TextInput 
          placeholder={"Mobile"}
          value={this.state.mobile}
          onChangeText={(val)=>this.inputValueUpdate(val , 'mobile')}
          />
        </View>
+        </View>
       
-       <View  style={{flex:1,}}>
+      
+       <View  style={{flexDirection:'row',justifyContent:'space-evenly'}}>
+      
          <Button
           title="Add User"
           color ='green'
@@ -108,6 +127,7 @@ class AddUserScreen extends Component {
          />
          <Button
           title="List Users"
+          color="blue"
           onPress={()=>this.props.navigation.navigate("UserScreen")}
          />
        </View>
@@ -119,7 +139,7 @@ class AddUserScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 35,
+    padding: 30,
   },
    inputgroup:{
      flex :1,
@@ -130,6 +150,7 @@ const styles = StyleSheet.create({
      margin : 10,
      borderRadius:20,
      padding:10,
+     flexDirection: 'row',
    },
   preloader: {
     left: 0,
@@ -139,7 +160,24 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+  input_container : {
+    borderWidth:1,
+    marginBottom:20,
+    borderColor:'#cccccc',
+    borderRadius:20,
+    paddingBottom:30,
+  },
+  title : {
+    alignSelf:'center',
+    fontSize:20,
+    fontWeight:'bold',
+  },
+  title_container : {
+      flexDirection:'row',
+      margin:10,
+      alignSelf:'center'
+  },
 })
 
 export default AddUserScreen;
