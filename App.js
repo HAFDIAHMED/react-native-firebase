@@ -131,11 +131,11 @@ export default function App() {
    function MyUsers (){
 
     return (
-      <Stack.Navigator>
-        <Stack.Screen name ="AddUserScreen" component={AddUserScreen}/>
-        <Stack.Screen name ="UserScreen" component={UserScreen}/>
-        <Stack.Screen name ="UserDetailScreen" component={UserDetailScreen}/>
-      </Stack.Navigator>
+      <TabTop.Navigator style={{marginTop : 40}}>
+        <TabTop.Screen name ="Add User" component={AddUserScreen}/>
+        <TabTop.Screen name ="Users" component={UserScreen}/>
+        <TabTop.Screen name ="User DetailS" component={UserDetailScreen}/>
+      </TabTop.Navigator>
     );
    }
  

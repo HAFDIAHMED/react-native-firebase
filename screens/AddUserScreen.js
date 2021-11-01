@@ -125,7 +125,11 @@ const styles = StyleSheet.create({
      flex :1,
      marginBottom : 15,  
      borderBottomWidth : 1,
-     borderBottomColor : '#cccccc',
+     //borderBottomColor : '#cccccc',
+     borderWidth:1,
+     margin : 10,
+     borderRadius:20,
+     padding:10,
    },
   preloader: {
     left: 0,
